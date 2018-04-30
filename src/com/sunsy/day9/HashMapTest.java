@@ -1,7 +1,7 @@
 /**
  * 
  */
-package day9.copy;
+package com.sunsy.day9;
 
 import java.util.HashMap;
 import java.util.Set;

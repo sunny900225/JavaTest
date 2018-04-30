@@ -1,7 +1,7 @@
 /**
  * 
  */
-package day9;
+package com.sunsy.day9;
 
 /**
  * @author SEELE
