@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sunsy.day9;
+package com.sunsy.qianchengdai;
 
 /**
  * @author SEELE
@@ -11,10 +11,10 @@ package com.sunsy.day9;
 public class Member {
 	//1、描述这类事物的属性——》成员变量
 	private int id;
-	public String regName;
+	private String regName;
 	private String mobilePhone;
-	public String pwd;
-	private double leaveAmount = 2;
+	private String pwd;
+	private double leaveAmount;
 	
 	/**
 	 * @return the id
@@ -53,10 +53,33 @@ public class Member {
 		this.pwd = pwd;
 	}
 	public void setmobilePhone(String mobilePhone){
-		this.mobilePhone = mobilePhone;
+		if (mobilePhone.length()!=11){
+			System.out.println("设置失败：手机号必须为11位");
+		}else{
+			System.out.println("设置成功");
+			this.mobilePhone = mobilePhone;
+		}
 	}
 	public String getmobilePhone(){
 		return this.mobilePhone;
+	}
+	
+	public double getLeaveAmount() {
+		return leaveAmount;
+	}
+	public void setLeaveAmount(double leaveAmount) {
+		this.leaveAmount = leaveAmount;
+	}
+	public Member() {
+		super();
+	}
+	public Member(int id, String regName, String mobilePhone, String pwd, double leaveAmount) {
+		super();
+		this.id = id;
+		this.regName = regName;
+		this.mobilePhone = mobilePhone;
+		this.pwd = pwd;
+		this.leaveAmount = leaveAmount;
 	}
 	//2、描述这类事物的行为——》方法
 	public void register(String mobilePhone,String pwd){
@@ -92,7 +115,7 @@ public class Member {
 		 */
 	}
 	public boolean recharge(double amount){
-		if (amount < 100 || amount >= 500000){
+		if (amount < 100){
 			System.out.println("充值失败");
 			return false;
 		}else{
@@ -100,6 +123,17 @@ public class Member {
 			leaveAmount += amount;
 			return true;
 		}
+	}
+	public void withdraw(double amount){
+		//this.实例方法中间，表示调用该方法的当前对象
+		if (amount < 100.0 || amount > 500000){
+			System.out.println("提现失败");
+		}else if(amount > this.leaveAmount){
+			System.out.println("余额不足，提现失败");
+		}else{
+			this.leaveAmount -= amount;
+		}
+		
 	}
 	public static void main(String arg[]){
 //		Member sunsy = new Member();

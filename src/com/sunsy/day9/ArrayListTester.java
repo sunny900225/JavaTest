@@ -6,6 +6,9 @@ package com.sunsy.day9;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.sunsy.qianchengdai.Borrower;
+import com.sunsy.qianchengdai.Member;
+
 
 /**
  * @author SEELE
@@ -46,6 +49,11 @@ public class ArrayListTester {
 		ArrayList<Member> memberList = new ArrayList<Member>();
 		Borrower tom = new Borrower();
 		memberList.add(tom);
+		
+		Member jack = new Borrower();
+		ArrayList<Borrower> borrowerList = new ArrayList<Borrower>();
+		//borrowerList.add(jack);//编译器报错
+		borrowerList.add((Borrower)jack);//jack实际就是borrower。如果jack是investor，则运行期报错
 		
 	}
 
