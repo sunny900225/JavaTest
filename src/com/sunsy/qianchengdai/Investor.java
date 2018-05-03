@@ -13,7 +13,10 @@ import com.sunsy.qianchengdai.Member;
  * @email 345720475@qq.com
  * @desc 投资人
  */
+
+
 public class Investor extends Member{
+	public int y = 1;
 	public boolean recharge(double amount){
 		if(super.recharge(amount)){//显式的调用父类方法
 			System.out.println("充值成功，你可以去投资了！");		
@@ -41,11 +44,17 @@ public class Investor extends Member{
 			invest.setLoanId(loan.getId());
 			invest.setCreateTime(new Date());
 			invest.setAmount(investAmount);
+			invest.setId(10086);
 			
 			this.setLeaveAmount(this.getLeaveAmount() - investAmount);
 			System.out.println("投资成功，欢迎再来投资");
 			return invest;//返回生成的投资记录——》返回调用处，不会再返回null了
 		}return null;//什么都没返回最后返回null
 	}
+//	@Override
+//	public void logout() {
+//		// TODO Auto-generated method stub
+//		System.out.println("投资人登出");
+//	}
 
 }

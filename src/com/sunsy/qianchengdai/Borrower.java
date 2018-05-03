@@ -60,11 +60,16 @@ public class Borrower extends Member{
 //		Borrower br = new Borrower();
 //		br.recharge(50);
 //		br.register("131", "111");
-		Member member = new Member();
+		//Member member = new Member();
 		//Member member = new Borrower("saaaaaaaa");
 		//member.recharge(1);
 		
-		Borrower b=(Borrower) member;
-		b.setAddress("address");
+//		Borrower b=(Borrower) member;
+//		b.setAddress("address");
 	}
+//	@Override
+//	public void logout() {
+//		// TODO Auto-generated method stub
+//		System.out.println("½è¿îÈËµÇ³ö");
+//	}
 }

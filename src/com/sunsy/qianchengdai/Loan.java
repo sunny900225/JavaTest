@@ -11,7 +11,7 @@ package com.sunsy.qianchengdai;
 public class Loan {
 	private int id;
 	private String title;//項目标题
-	private double loanRate;//年化收益
+	private double loanRate;//年化收益12.0——》12%
 	private int loanTerm;//借款周期
 	private double amount;//金额
 	private int loanDateType;//标的的日期类型：1天标	2月标

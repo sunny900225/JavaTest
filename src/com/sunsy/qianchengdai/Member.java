@@ -16,6 +16,8 @@ public class Member {
 	private String pwd;
 	private double leaveAmount;
 	
+//	public abstract void logout();
+	
 	/**
 	 * @return the id
 	 */
@@ -138,11 +140,11 @@ public class Member {
 	public static void main(String arg[]){
 //		Member sunsy = new Member();
 		
-		Member member = null;//局部变量，初始化了null:引用类型的默认值，缺省值
-		member = new Member();
-		
-		member.id = 1;
-		member.register("13581985992", "9002299");
+//		Member member = null;//局部变量，初始化了null:引用类型的默认值，缺省值
+//		member = new Member();
+//		
+//		member.id = 1;
+//		member.register("13581985992", "9002299");
 //		boolean flag = 10%2 == 1&& 10/3 ==0 && 1/0 == 0;
 //		System.out.println(flag ? "mldn" : "yootk") ; 
 //		 int num = 50 ; 
