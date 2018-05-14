@@ -64,16 +64,18 @@ public class Test {
  */		
 		Loan loan = new Loan();
 		loan.setAmount(10000);
-		loan.setId(25);
-		loan.setLoanDateType(1);
-		loan.setLoanTerm(30);
-		loan.setLoanRate(10);
+		//loan.setId(25);
+		loan.setLoanDateType(2);
+		loan.setLoanTerm(5);
+		loan.setLoanRate(12);
 		
 		Investor tom = new Investor();
 		tom.recharge(10000.0);
 		Invest invest = tom.invest(10000, loan);
-		invest.generateRepaymentPlan(loan);
-
+		System.out.println(invest.generateRepaymentPlan(loan));
+		for (Repayment repayment : invest.generateRepaymentPlan(loan)){
+			System.out.println(repayment);
+		}
 		
 		
 	}

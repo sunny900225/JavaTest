@@ -1,5 +1,6 @@
 package com.sunsy.qianchengdai;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
@@ -49,7 +50,7 @@ public class Invest {
 		return "Invest [createTime=" + createTime + ", amount=" + amount + ", memberId=" + memberId + ", loanId="
 				+ loanId + "]";
 	}
-	public Repayment generateRepaymentPlan(Loan loan){
+	public ArrayList<Repayment> generateRepaymentPlan(Loan loan){
 		//需要知道的信息：
 		//投资金额——》投资自己的实例方法，不用传
 		//投资id
@@ -75,6 +76,7 @@ public class Invest {
 		int id = this.getId();
 		double loanRate = loan.getLoanRate();
 		int loanTerm = loan.getLoanTerm();
+		ArrayList<Repayment> repayments = new ArrayList<>();
 		
 		if(loan.getLoanDateType() == 1){
 			Repayment repayment = new Repayment();
@@ -87,27 +89,33 @@ public class Invest {
 			//利息=投资金额*年化收益/100/360*投资期限
 			double interest = amount*loanRate/100/360*loanTerm;
 			repayment.setInterest(interest);
-			System.out.println(repayment);
-			return repayment;
+			//System.out.println(repayment);
+			
+			repayments.add(repayment);
+			return repayments;
 			
 		}else if(loan.getLoanDateType() == 2){
-			for (int i=1;i < loanTerm;i++){
+			for (int i=1;i <= loanTerm;i++){
 				Repayment repayment = new Repayment();
 				repayment.setId(i);
 				repayment.setLoanId(loan.getId());
-				repayment.setPrincipal(0);
 				repayment.setInvestId(id);
 				repayment.setStatus(0);//沒有回款的
 				
 				//利息=投资金额*年化收益/100/12*投资期限
 				double interest = amount*loanRate/100/12;
 				repayment.setInterest(interest);
-				System.out.println(repayment);
-				return repayment;
-			}
-		}else{
-			return null;
+				if (i == loanTerm){
+					repayment.setPrincipal(amount);
+				}else{
+					repayment.setPrincipal(0);
+				}
+				//System.out.println(repayment);
+				repayments.add(repayment);
+				
+			}return repayments;
 		}
 		return null;
+
 	}
 }
